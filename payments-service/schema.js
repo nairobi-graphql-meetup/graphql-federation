@@ -5,7 +5,7 @@ const typeDefs = gql`
     payments: [Payment]
   }
 
-  type Payment {
+  type Payment @key(fields: "payment_id") {
     amount: Float!
     payment_id: String!
     date_paid: String!
