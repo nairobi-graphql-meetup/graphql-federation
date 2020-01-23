@@ -8,8 +8,8 @@
   "scripts": {
     "user-service": "cd ./user-service && node index.js",
     "user-service-dev": "cd ./user-service && nodemon index.js",
-    "payment-service": "cd ./payments-service && node index.js",
-    "payment-service-dev": "cd ./payments-service && nodemon index.js",
+    "payment-service": "cd ./payment-service && node index.js",
+    "payment-service-dev": "cd ./payment-service && nodemon index.js",
     "gateway": "cd ./gateway && node index.js",
     "gateway-dev": "cd ./gateway && nodemon index.js"
   },
