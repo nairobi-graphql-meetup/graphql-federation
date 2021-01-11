@@ -14,11 +14,12 @@ const gateway = new ApolloGateway({
   ]
 });
 
+
 (async () => {
   const { schema, executor } = await gateway.load().catch(error => console.log(`failed to load gateway ${error}`));
-  const server = new ApolloServer({ schema, executor });
+  const server = new ApolloServer({ schema, executor, tracing: true});
   server
-    .listen()
+    .listen({ port: 1000 })
     .then(({ url }) => console.log(`🚀 gateway started at ${url}`))
     .catch(error => console.log(`failed to start gateway ${error}`));
 })();

@@ -1,13 +1,14 @@
+const users = require('../user-service/users');
 const payments = require('./payments');
-
-const filterPaymentsByUserId = user_id => payments.filter(payment => payment.user_id === user_id);
 
 const resolvers = {
   Query: {
     payments: () => payments
   },
-  User: {
-    payments: user => filterPaymentsByUserId(user.user_id)
+  Payment: {
+    paid_by(payment) {
+      return { __typename: "User", user_id: payment.user_id };
+    }
   }
 };
 

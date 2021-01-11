@@ -1,13 +1,14 @@
 const users = require('./users');
 
-const findUserById = id => users.find(({ user_id }) => user_id === id);
-
 const resolvers = {
   Query: {
     users: () => users
   },
-  Payment: {
-    paid_by: payment => findUserById(payment.user_id)
+  User: {
+    __resolveReference(reference) {
+      console.log("__resolveReference reference", reference)
+      return users.find(user => user.user_id === reference.user_id)
+    }
   }
 };
 

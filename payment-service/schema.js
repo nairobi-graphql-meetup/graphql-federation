@@ -2,7 +2,7 @@ const { gql } = require('apollo-server');
 
 const typeDefs = gql`
   type Query {
-    payments: [Payment]
+    payments: [Payment!]
   }
 
   type Payment @key(fields: "payment_id") {
@@ -10,11 +10,11 @@ const typeDefs = gql`
     payment_id: String!
     date_paid: String!
     user_id: String!
+    paid_by: User
   }
 
   extend type User @key(fields: "user_id") {
     user_id: String! @external
-    payments: [Payment!]! @requires(fields: "user_id")
   }
 `;
 
